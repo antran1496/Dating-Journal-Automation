@@ -108,6 +108,17 @@ for a in $(sed -n '/<dependencies>/,/<\/dependencies>/p' pom.xml | grep -oE '<ar
 done
 [ $ERRORS -eq $before ] && pass "Chỉ dùng thư viện đã duyệt"
 
+echo "▶ 6. Nhánh làm việc Git (không dev trực tiếp trên main)"
+before=$ERRORS
+if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+    current_branch=$(git branch --show-current 2>/dev/null)
+    if [ "$current_branch" = "main" ] && [ -n "$(git status --porcelain 2>/dev/null)" ]; then
+        fail "Đang có thay đổi trực tiếp trên nhánh 'main' — CẤM dev ở nhánh main, hãy chuyển sang branch riêng (git checkout -b <loại>/<mô-tả>)"
+    else
+        pass "Nhánh hợp lệ (branch: ${current_branch:-unknown})"
+    fi
+fi
+
 echo
 if [ $ERRORS -gt 0 ]; then
     echo "❌ KHÔNG ĐẠT: $ERRORS vi phạm. Sửa theo AGENTS.md rồi chạy lại."

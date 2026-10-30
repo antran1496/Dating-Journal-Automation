@@ -7,6 +7,10 @@ description: Quy trình tổng khi người dùng yêu cầu tự động hóa t
 
 Làm **tuần tự**, không bỏ bước.
 
+## Bước 0 — Kiểm tra & tạo Branch (BẮT BUỘC trước khi code)
+- Chạy `git branch --show-current`.
+- **CẤM dev trực tiếp trên nhánh `main`**. Nếu đang ở `main`, tạo branch mới: `git checkout -b feat/<tên-tính-năng>` (hoặc `feat/DJA_<số>-<tên>`).
+
 ## Bước 1 — Khảo sát (theo `locator-strategy`)
 - Mở màn hình bằng Playwright MCP, đăng nhập bằng tài khoản trong `.env` nếu cần.
 - Ghi lại: URL/path, các phần tử cần thao tác + locator, thông báo lỗi/thành công **nguyên văn**, điều hướng sau hành động.

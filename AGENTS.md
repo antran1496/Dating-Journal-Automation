@@ -9,7 +9,7 @@
 - Agent **luôn trả lời người dùng bằng tiếng Việt**.
 - Tên class, method, biến, hằng số, file, package: **tiếng Anh**.
 - Comment, Javadoc, `@Description`, `@Step`, thông báo assert, log, tài liệu `.md`, rules, skills: **tiếng Việt**.
-- Commit message: tiền tố Conventional Commits tiếng Anh (`feat`, `fix`...), phần mô tả **tiếng Việt** (xem skill `auto-commit`).
+- Commit message: **BẮT BUỘC viết hoàn toàn bằng tiếng Anh** theo chuẩn Conventional Commits, **chỉ thêm icon `🐛` ở commit `fix` (bug)**, các loại khác không thêm icon (xem skill `auto-commit`).
 
 ## 1. Tech stack cố định (KHÔNG tự ý thêm thư viện)
 
@@ -70,16 +70,18 @@ dating/
 5. Implicit wait khác 0 · XPath tuyệt đối (`/html/body/...`) · locator dựa vào class Tailwind động.
 6. Test phụ thuộc thứ tự (`dependsOnMethods`, `priority` để nối luồng) · biến static chia sẻ trạng thái giữa test.
 7. `@Test(enabled = false)` mà không có comment lý do + link issue.
-8. Commit file `.env`, `target/`, báo cáo, hoặc tự ý commit/push khi người dùng chưa yêu cầu.
+8. Commit file `.env`, `target/`, báo cáo, hoặc tự ý commit/push/merge khi người dùng chưa yêu cầu.
+9. **Dev/sửa code trực tiếp trên nhánh `main`** → luôn phải kiểm tra branch trước khi làm và làm việc trên branch riêng tạo từ `main`; chỉ merge vào `main` khi có yêu cầu rõ ràng của người dùng.
 
 ## 4. Quy trình bắt buộc cho mọi yêu cầu viết/sửa test
 
+0. **Kiểm tra branch TRƯỚC khi thực hiện (`git branch --show-current`)**: nếu đang ở `main`, bắt buộc tạo và chuyển sang branch mới từ `main` (`git checkout -b <loại>/<mô-tả-ngắn>`, ví dụ `feat/signup-test`, `fix/login-locator`) rồi mới bắt đầu sửa/tạo file. **CẤM dev trên `main`.**
 1. **Đọc skill liên quan TRƯỚC khi code** (bảng mục 5).
 2. Khảo sát UI thật (Playwright MCP / trình duyệt) để lấy locator — không đoán.
 3. Viết theo đúng mẫu chuẩn ở mục 2.
 4. Chạy `bash scripts/verify-structure.sh` → phải PASS.
 5. Chạy `mvn -q -B clean test-compile` → phải PASS; chạy test liên quan → phải PASS.
-6. Báo cáo bằng tiếng Việt: file đã thêm/sửa, kết quả chạy. **Không tự commit** — chờ lệnh.
+6. Báo cáo bằng tiếng Việt: branch hiện tại, file đã thêm/sửa, kết quả chạy. **Không tự commit, không tự merge vào `main`** — chờ lệnh.
 
 ## 5. Skills (đọc trước khi làm việc tương ứng)
 
