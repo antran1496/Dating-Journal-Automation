@@ -1,0 +1,23 @@
+# Bí mật
+.env
+.env.*
+!.env.example
+
+# Build & báo cáo
+target/
+allure-results/
+allure-report/
+test-output/
+*.log
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# Hệ điều hành
+.DS_Store
+Thumbs.db

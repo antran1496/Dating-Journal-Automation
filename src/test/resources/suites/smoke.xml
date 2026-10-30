@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<!-- Smoke: các luồng sống còn, chạy nhanh sau mỗi lần deploy. -->
+<suite name="Dating Journal - Smoke" parallel="methods" thread-count="3" data-provider-thread-count="3">
+    <listeners>
+        <listener class-name="com.datingjournal.listeners.TestListener"/>
+        <listener class-name="com.datingjournal.listeners.RetryTransformer"/>
+    </listeners>
+
+    <test name="Smoke">
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="com.datingjournal.tests.*"/>
+        </packages>
+    </test>
+</suite>

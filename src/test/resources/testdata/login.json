@@ -1,0 +1,49 @@
+{
+  "_comment": "Dữ liệu test màn hình Đăng nhập. Placeholder ${KEY} được thay bằng cấu hình (.env / properties). KHÔNG ghi mật khẩu thật vào file này.",
+  "validLogin": [
+    {
+      "caseId": "TC_LOGIN_01",
+      "description": "Đăng nhập bằng tài khoản admin hợp lệ",
+      "email": "${ADMIN_EMAIL}",
+      "password": "${ADMIN_PASSWORD}"
+    }
+  ],
+  "invalidLogin": [
+    {
+      "caseId": "TC_LOGIN_02_01",
+      "description": "Sai mật khẩu",
+      "email": "${ADMIN_EMAIL}",
+      "password": "WrongPass@123",
+      "expectedFormError": "Email hoặc mật khẩu không chính xác"
+    },
+    {
+      "caseId": "TC_LOGIN_02_02",
+      "description": "Email không tồn tại",
+      "email": "not.exist.automation@gmail.com",
+      "password": "${ADMIN_PASSWORD}",
+      "expectedFormError": "Email hoặc mật khẩu không chính xác"
+    },
+    {
+      "caseId": "TC_LOGIN_02_03",
+      "description": "Bỏ trống email",
+      "email": "",
+      "password": "${ADMIN_PASSWORD}",
+      "expectedEmailError": "Vui lòng nhập email"
+    },
+    {
+      "caseId": "TC_LOGIN_02_04",
+      "description": "Bỏ trống mật khẩu",
+      "email": "${ADMIN_EMAIL}",
+      "password": "",
+      "expectedPasswordError": "Vui lòng nhập mật khẩu"
+    },
+    {
+      "caseId": "TC_LOGIN_02_05",
+      "description": "Bỏ trống cả email và mật khẩu",
+      "email": "",
+      "password": "",
+      "expectedEmailError": "Vui lòng nhập email",
+      "expectedPasswordError": "Vui lòng nhập mật khẩu"
+    }
+  ]
+}
