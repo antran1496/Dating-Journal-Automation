@@ -15,8 +15,8 @@ public final class ConfigKey {
     public static final String WINDOW_WIDTH = "window.width";
     public static final String WINDOW_HEIGHT = "window.height";
     public static final String RETRY_COUNT = "retry.count";
-    public static final String ADMIN_EMAIL = "admin.email";
-    public static final String ADMIN_PASSWORD = "admin.password";
+    public static final String TEST_EMAIL = "test.email";
+    public static final String TEST_PASSWORD = "test.password";
 
     private ConfigKey() {
     }

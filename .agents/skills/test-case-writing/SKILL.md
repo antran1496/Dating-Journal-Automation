@@ -44,7 +44,7 @@ public class XxxTest extends BaseTest {
 | Allure | `@Epic`, `@Feature` ở class; `@Severity`, `@Description("TC_ID: ...")` ở method |
 | Assert | TestNG `Assert` / `SoftAssert` (gọi `assertAll()`), message tiếng Việt, có `caseId` |
 | Dữ liệu | Từ DataProvider hoặc `AppConfig` — không hardcode |
-| Độc lập | Không `dependsOnMethods`, không chia sẻ state static; test cần đăng nhập thì tự đăng nhập trong Arrange (`new LoginPage().open().loginAs(AppConfig.adminEmail(), AppConfig.adminPassword())`) |
+| Độc lập | Không `dependsOnMethods`, không chia sẻ state static; test cần đăng nhập thì tự đăng nhập trong Arrange (`new LoginPage().open().loginAs(AppConfig.testEmail(), AppConfig.testPassword())`) |
 | Đăng ký | Test tự được suite nhặt qua package `com.datingjournal.tests.*` + group — không cần sửa XML |
 
 ## 3. Mã Test Case

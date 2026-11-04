@@ -87,9 +87,9 @@ grep_check "Không dùng dependsOnMethods giữa các test" 'dependsOnMethods' "
 echo "▶ 4. Bảo mật dữ liệu"
 before=$ERRORS
 if [ -f .env ]; then
-    pwd_value=$(grep -E '^ADMIN_PASSWORD=' .env | cut -d= -f2- | tr -d '\r')
+    pwd_value=$(grep -E '^TEST_PASSWORD=' .env | cut -d= -f2- | tr -d '\r')
     if [ -n "$pwd_value" ] && grep -rnF -- "$pwd_value" src >/dev/null 2>&1; then
-        fail "Mật khẩu thật trong .env bị hardcode trong src/ — dùng placeholder \${ADMIN_PASSWORD}"
+        fail "Mật khẩu thật trong .env bị hardcode trong src/ — dùng placeholder \${TEST_PASSWORD}"
     fi
 fi
 grep -qE '^\.env$' .gitignore || fail ".gitignore phải chứa .env"

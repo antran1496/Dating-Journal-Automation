@@ -31,6 +31,7 @@
 dating/
 ├── AGENTS.md                      ← file này
 ├── README.md · pom.xml · .gitignore · .env.example   (.env: KHÔNG commit)
+├── .github/workflows/             ← CI GitHub Actions (regression.yml)
 ├── .agents/
 │   ├── rules/                     ← luật chi tiết (always_on)
 │   └── skills/                    ← quy trình từng việc

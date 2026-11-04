@@ -5,7 +5,7 @@ package com.datingjournal.data.models;
  *
  * @param caseId                mã test case, ví dụ {@code TC_LOGIN_02_01}
  * @param description           mô tả ngắn bằng tiếng Việt, hiển thị trên báo cáo
- * @param email                 email nhập vào (có thể là placeholder {@code ${ADMIN_EMAIL}})
+ * @param email                 email nhập vào (có thể là placeholder {@code ${TEST_EMAIL}})
  * @param password              mật khẩu nhập vào
  * @param expectedFormError     thông báo lỗi chung mong đợi ("" nếu không có)
  * @param expectedEmailError    thông báo lỗi dưới ô email mong đợi ("" nếu không có)

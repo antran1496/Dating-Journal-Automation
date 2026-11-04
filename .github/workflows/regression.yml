@@ -1,0 +1,90 @@
+# =====================================================================
+# GitHub Actions Workflow — Chạy bộ test Regression (chỉ chạy thủ công trên nhánh main)
+# Cần khai báo Repository Secrets trên GitHub:
+#   - TEST_EMAIL
+#   - TEST_PASSWORD
+# =====================================================================
+name: Regression Tests
+
+on:
+  # Cấu hình chạy tự động (đang tạm tắt — bỏ comment khi cần kích hoạt):
+  # push:
+  #   branches:
+  #     - main
+  # pull_request:
+  #   branches:
+  #     - main
+
+  # Chỉ cho phép kích hoạt chạy thủ công (Run workflow trên GitHub Actions)
+  workflow_dispatch:
+    inputs:
+      env:
+        description: "Môi trường chạy test (prod | staging | dev)"
+        required: false
+        default: "prod"
+        type: choice
+        options:
+          - prod
+          - staging
+          - dev
+      browser:
+        description: "Trình duyệt chạy test (chrome | firefox | edge)"
+        required: false
+        default: "chrome"
+        type: choice
+        options:
+          - chrome
+          - firefox
+          - edge
+      viewport:
+        description: "Khung nhìn (desktop | mobile)"
+        required: false
+        default: "desktop"
+        type: choice
+        options:
+          - desktop
+          - mobile
+
+jobs:
+  regression:
+    name: Run Regression Suite
+    # Đảm bảo chỉ chạy trên nhánh main
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout mã nguồn
+        uses: actions/checkout@v4
+
+      - name: Cài đặt Java 17 (Temurin) và cache Maven
+        uses: actions/setup-java@v4
+        with:
+          java-version: "17"
+          distribution: "temurin"
+          cache: "maven"
+
+      - name: Kiểm tra tuân thủ cấu trúc & quy tắc framework
+        run: bash scripts/verify-structure.sh
+
+      - name: Chạy bộ test Regression
+        env:
+          TEST_EMAIL: ${{ secrets.TEST_EMAIL }}
+          TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
+          ENV: ${{ inputs.env || 'prod' }}
+          BROWSER: ${{ inputs.browser || 'chrome' }}
+          VIEWPORT: ${{ inputs.viewport || 'desktop' }}
+        run: mvn -B clean test -Dsuite=regression -Dheadless=true
+
+      - name: Tải lên báo cáo Allure, Surefire, Log và Screenshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-test-reports-${{ github.run_id }}
+          path: |
+            target/allure-results/
+            target/surefire-reports/
+            target/screenshots/
+            target/logs/
+          if-no-files-found: ignore
+          retention-days: 14

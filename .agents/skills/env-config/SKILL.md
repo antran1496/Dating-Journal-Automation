@@ -16,7 +16,7 @@ Mã nguồn: [ConfigManager.java](../../../src/main/java/com/datingjournal/confi
 
 ## 2. Thiết lập lần đầu
 ```bash
-cp .env.example .env     # rồi điền ADMIN_EMAIL, ADMIN_PASSWORD
+cp .env.example .env     # rồi điền TEST_EMAIL, TEST_PASSWORD
 ```
 - `.env` nằm trong `.gitignore` — **CẤM commit**. `.env.example` được commit, chỉ chứa key + giá trị rỗng/mặc định.
 
@@ -33,7 +33,7 @@ cp .env.example .env     # rồi điền ADMIN_EMAIL, ADMIN_PASSWORD
 | `page.load.timeout.seconds` | `PAGE_LOAD_TIMEOUT_SECONDS` | Timeout tải trang | `60` |
 | `window.width` / `window.height` | `WINDOW_WIDTH` / `WINDOW_HEIGHT` | Kích thước cửa sổ | `1440x900` |
 | `retry.count` | `RETRY_COUNT` | Số lần chạy lại test fail | `0` |
-| `admin.email` / `admin.password` | `ADMIN_EMAIL` / `ADMIN_PASSWORD` | Tài khoản test (bắt buộc, chỉ để trong `.env`/CI secret) | — |
+| `test.email` / `test.password` | `TEST_EMAIL` / `TEST_PASSWORD` | Tài khoản test (bắt buộc, chỉ để trong `.env`/CI secret) | — |
 
 ## 4. Thêm key mới (đủ 4 bước)
 1. Thêm hằng vào `ConfigKey` (dot-case).
