@@ -20,7 +20,7 @@ import java.util.regex.Pattern;
  * Đọc test data JSON từ {@code src/test/resources/testdata/}.
  * <p>
  * Hỗ trợ placeholder {@code ${KEY}} trong giá trị chuỗi: được thay bằng cấu hình tương ứng
- * (ví dụ {@code ${ADMIN_EMAIL}} → {@link AppConfig#resolve(String)} với key {@code admin.email}).
+ * (ví dụ {@code ${TEST_EMAIL}} → {@link AppConfig#resolve(String)} với key {@code test.email}).
  * Nhờ đó dữ liệu nhạy cảm (tài khoản, mật khẩu) KHÔNG bao giờ nằm trong file JSON.
  */
 public final class JsonDataReader {

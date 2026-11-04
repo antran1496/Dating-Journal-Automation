@@ -16,7 +16,7 @@ Mẫu chuẩn: [login.json](../../../src/test/resources/testdata/login.json) →
     {
       "caseId": "TC_<MODULE>_<NN>_<MM>",
       "description": "Mô tả tiếng Việt, hiện trên báo cáo",
-      "email": "${ADMIN_EMAIL}",
+      "email": "${TEST_EMAIL}",
       "expectedXxx": "Thông báo copy nguyên văn từ UI"
     }
   ]
@@ -25,7 +25,7 @@ Mẫu chuẩn: [login.json](../../../src/test/resources/testdata/login.json) →
 
 - Mỗi **section** = 1 nhóm kịch bản cùng kiểu (ví dụ `validLogin`, `invalidLogin`) ↔ 1 `@DataProvider`.
 - **Bắt buộc** có `caseId` và `description`.
-- Dữ liệu nhạy cảm/thay đổi theo môi trường: dùng placeholder `${KEY}` → tự thay bằng cấu hình `key` (ví dụ `${ADMIN_EMAIL}` → `admin.email`). **CẤM ghi mật khẩu thật vào JSON.**
+- Dữ liệu nhạy cảm/thay đổi theo môi trường: dùng placeholder `${KEY}` → tự thay bằng cấu hình `key` (ví dụ `${TEST_EMAIL}` → `test.email`). **CẤM ghi mật khẩu thật vào JSON.**
 - Trường không áp dụng: bỏ qua (record sẽ nhận `""`).
 - Thêm kịch bản mới = thêm phần tử JSON, **không sửa Java**.
 

@@ -3,16 +3,16 @@
   "validLogin": [
     {
       "caseId": "TC_LOGIN_01",
-      "description": "Đăng nhập bằng tài khoản admin hợp lệ",
-      "email": "${ADMIN_EMAIL}",
-      "password": "${ADMIN_PASSWORD}"
+      "description": "Đăng nhập bằng tài khoản test hợp lệ",
+      "email": "${TEST_EMAIL}",
+      "password": "${TEST_PASSWORD}"
     }
   ],
   "invalidLogin": [
     {
       "caseId": "TC_LOGIN_02_01",
       "description": "Sai mật khẩu",
-      "email": "${ADMIN_EMAIL}",
+      "email": "${TEST_EMAIL}",
       "password": "WrongPass@123",
       "expectedFormError": "Email hoặc mật khẩu không chính xác"
     },
@@ -20,20 +20,20 @@
       "caseId": "TC_LOGIN_02_02",
       "description": "Email không tồn tại",
       "email": "not.exist.automation@gmail.com",
-      "password": "${ADMIN_PASSWORD}",
+      "password": "${TEST_PASSWORD}",
       "expectedFormError": "Email hoặc mật khẩu không chính xác"
     },
     {
       "caseId": "TC_LOGIN_02_03",
       "description": "Bỏ trống email",
       "email": "",
-      "password": "${ADMIN_PASSWORD}",
+      "password": "${TEST_PASSWORD}",
       "expectedEmailError": "Vui lòng nhập email"
     },
     {
       "caseId": "TC_LOGIN_02_04",
       "description": "Bỏ trống mật khẩu",
-      "email": "${ADMIN_EMAIL}",
+      "email": "${TEST_EMAIL}",
       "password": "",
       "expectedPasswordError": "Vui lòng nhập mật khẩu"
     },

@@ -64,12 +64,12 @@ public final class AppConfig {
         return CONFIG.getInt(ConfigKey.RETRY_COUNT, 0);
     }
 
-    public static String adminEmail() {
-        return CONFIG.get(ConfigKey.ADMIN_EMAIL);
+    public static String testEmail() {
+        return CONFIG.get(ConfigKey.TEST_EMAIL);
     }
 
-    public static String adminPassword() {
-        return CONFIG.get(ConfigKey.ADMIN_PASSWORD);
+    public static String testPassword() {
+        return CONFIG.get(ConfigKey.TEST_PASSWORD);
     }
 
     /** Tra cứu giá trị theo key bất kỳ (dùng cho placeholder ${KEY} trong test data). */
